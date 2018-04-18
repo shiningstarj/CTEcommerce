@@ -1,0 +1,3 @@
+graft auron/templates
+graft auron/static
+include auron/schema.sql

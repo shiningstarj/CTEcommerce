@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+  <ul class=cart>
+  {% for product in cart %}
+    <li><h2>{{ product.name }}</h2><img src="{{ product.name }}.jpg" alt="{{ product.name }}">
+	<h3>{{ product.price }}</h3>
+    <form action="{{ url_for('delete_from_cart') }}" method=post class=delete-cart>
+      <dl>
+		<dd><input type="hidden" name="id" value="{{ product.id }}">
+        <dd><input type=submit value="Delete From Cart">
+      </dl>
+    </form>
+  {% else %}
+    <li><em>An empty cart... how sad!</em>
+  {% endfor %}
+  </ul>
+  <h2> Total price:</h2> {{ total }}
+{% endblock %}
