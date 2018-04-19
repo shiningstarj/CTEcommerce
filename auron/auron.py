@@ -41,7 +41,8 @@ def initdb_command():
 def populatedb_command():
 	"""Populates the database with sample values"""
 	db = get_db()
-	db.executemany('insert into products (name, price, description) values (?,?,?)', Samples.samples)
+	db.executemany('insert into products (name, price, description) values (?,?,?)', 
+		Samples.samples)
 	db.commit()
 
 def get_db():

@@ -1,20 +1,22 @@
 {% extends "layout.html" %}
 {% block body %}
-  <ul class=products>
   {% for product in products %}
-    <li><h2>{{ product.name }}</h2><img src="{{ url_for('static', filename=product.name~'.jpg')}}" alt="{{ product.name }}" width="200" height="200">{{ product.description }}
-	<h3>{{ "$%.2f"|format(product.price) }}</h3>
-	{% if session.logged_in %}
-    <form action="{{ url_for('add_to_cart') }}" method=post class=add-cart>
-      <dl>
-		<dd><input type="hidden" name="name" value="{{ product.name }}">
-		<dd><input type="hidden" name="price" value={{ product.price }}>
-        <dd><input type=submit value="Add to Cart">
-      </dl>
-    </form>
-	{% endif %}
+    <div class="product">
+		<h2>{{ product.name }}</h2>
+		<img src="{{ url_for('static', filename=product.name~'.jpg')}}" alt="{{ product.name }}">
+		<p>{{ product.description }}</p>
+		<h3>{{ "$%.2f"|format(product.price) }}</h3>
+		{% if session.logged_in %}
+		<form action="{{ url_for('add_to_cart') }}" method=post class=add-cart>
+		<dl>
+			<dd><input type="hidden" name="name" value="{{ product.name }}">
+			<dd><input type="hidden" name="price" value={{ product.price }}>
+			<dd><input type=submit value="Add to Cart">
+		</dl>
+		</form>
+		{% endif %}
+	</div>
   {% else %}
-    <li><em>An empty store... how sad!</em>
+    <div><em>An empty store... how sad!</em></div>
   {% endfor %}
-  </ul>
 {% endblock %}
