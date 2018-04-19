@@ -9,3 +9,5 @@ flask initdb
 flask populatedb
 flask run
 ```
+
+Don't forget to log in to use the cart functionality.
