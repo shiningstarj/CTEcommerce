@@ -2,8 +2,8 @@
 {% block body %}
   <ul class=products>
   {% for product in products %}
-    <li><h2>{{ product.name }}</h2><img src="{{ product.name }}.jpg" alt="{{ product.name }}">{{ product.description }}
-	<h3>{{ product.price }}</h3>
+    <li><h2>{{ product.name }}</h2><img src="{{ url_for('static', filename=product.name~'.jpg')}}" alt="{{ product.name }}" width="200" height="200">{{ product.description }}
+	<h3>{{ "$%.2f"|format(product.price) }}</h3>
 	{% if session.logged_in %}
     <form action="{{ url_for('add_to_cart') }}" method=post class=add-cart>
       <dl>

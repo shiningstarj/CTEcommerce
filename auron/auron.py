@@ -11,7 +11,7 @@ app.config.from_object(__name__) # load config from this file , auron.py
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'auron.db'),
-    SECRET_KEY='development key',
+    SECRET_KEY=os.urandom(42),
     USERNAME='admin',
     PASSWORD='default'
 ))
